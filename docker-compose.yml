@@ -1,0 +1,26 @@
+services:
+  www:
+    build: .
+    volumes:
+      - "./:/var/www/html" # Sync project dir with container web dir
+    ports:
+      - 80:80
+      - 443:443 # For SSL Traffic
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d" # Sync persistent sql files with container
