@@ -7,5 +7,8 @@
             "App\\BasicPhpMysqlDockerStack\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "robmorgan/phinx": "^0.16.11",
+        "vlucas/phpdotenv": "^5.6"
+    }
 }
