@@ -21,9 +21,9 @@ if (!$response) {
 
 echo "<strong>Posts: </strong>";
 while ($i = mysqli_fetch_assoc($response)) {
-    echo '<p>' . htmlspecialchars($i['title']) . '</p>';
-    echo '<p>' . htmlspecialchars($i['body']) . '</p>';
-    echo '<p>' . htmlspecialchars($i['date_created']) . '</p>';
+    echo '<p>Title: ' . htmlspecialchars($i['title']) . '</p>';
+    echo '<p>Body: ' . htmlspecialchars($i['body']) . '</p>';
+    echo '<p>Created at: ' . htmlspecialchars($i['created_at']) . '</p>';
     echo '<hr>';
 }
 
